@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1027088999560",
+    "project_id": "stackdock-v1",
+    "storage_bucket": "stackdock-v1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027088999560:android:800fed674356527484ab3d",
+        "android_client_info": {
+          "package_name": "jp.overfield.stackdock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027088999560-dnu5j11iid7vkojl689ob8j77t5mspnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0invMT8AOFvigk8cItvE6pMMBQNKgMlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027088999560-dnu5j11iid7vkojl689ob8j77t5mspnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f5f5f5; }
+      h1 { color: #333; }
+      .article-list { list-style: none; padding: 0; }
+      .article-item { background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+      .article-content { flex-grow: 1; }
+      .article-title { font-size: 18px; font-weight: bold; text-decoration: none; color: #1a73e8; display: block; margin-bottom: 5px; }
+      .article-date { font-size: 12px; color: #666; }
+      .actions { margin-left: 15px; }
+      .btn { padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
+      .btn-archive { background-color: #e0e0e0; color: #333; }
+      .btn-archive:hover { background-color: #d0d0d0; }
+      .hidden { display: none; }
+    </style>
+  </head>
+  <body>
+    <h1>Read It Later</h1>
+    <ul class="article-list">
+      <? for (var i = 0; i < articles.length; i++) { ?>
+        <? if (!articles[i].isRead) { ?>
+          <li class="article-item" id="item-<?= articles[i].id ?>">
+            <div class="article-content">
+              <a href="<?= articles[i].url ?>" target="_blank" class="article-title"><?= articles[i].title ?></a>
+              <span class="article-date"><?= new Date(articles[i].addedDate).toLocaleDateString() ?></span>
+            </div>
+            <div class="actions">
+              <button class="btn btn-archive" onclick="archiveItem('<?= articles[i].id ?>')">Archive</button>
+            </div>
+          </li>
+        <? } ?>
+      <? } ?>
+    </ul>
+    
+    <script>
+      function archiveItem(id) {
+        var item = document.getElementById('item-' + id);
+        item.style.opacity = '0.5';
+        google.script.run
+          .withSuccessHandler(function() {
+            item.classList.add('hidden');
+          })
+          .withFailureHandler(function(err) {
+            alert('Error: ' + err);
+            item.style.opacity = '1';
+          })
+          .markAsReadFromWeb(id);
+      }
+    </script>
+  </body>
+</html>
