@@ -1,6 +1,6 @@
 {
-    "name": "read_it_later",
-    "short_name": "read_it_later",
+    "name": "Stackdock",
+    "short_name": "Stackdock",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

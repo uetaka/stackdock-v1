@@ -1,4 +1,4 @@
-# Read It Later Service
+# Stackdock
 
 Google Spreadsheetをバックエンドに利用した、自分専用の「後で読む」サービスです。
 モバイル（Android/iOS）はFlutterアプリから、PC等のWebブラウザからはGASのWebページから利用します。
@@ -13,7 +13,7 @@ Google Spreadsheetをバックエンドに利用した、自分専用の「後�
 │   └── README.md          # デプロイ手順
 ├── docs/                   # ドキュメント
 │   └── requirements.md    # 要件定義書
-├── read_it_later/          # Flutter アプリケーション
+├── stackdock/              # Flutter アプリケーション
 │   ├── lib/               # ソースコード
 │   ├── android/           # Android設定
 │   ├── ios/               # iOS設定
@@ -45,7 +45,7 @@ WSL環境でAndroidアプリをビルドするには、Android SDKのインス�
 詳細は [walkthrough.md](./walkthrough.md) を参照してください。
 
 1. **バックエンド**: `backend/Code.js` をGoogle Apps Scriptにデプロイし、Web App URLを取得します。
-2. **フロントエンド**: `read_it_later` ディレクトリでFlutterアプリを実行し、設定画面でGASのURLを入力します。
+2. **フロントエンド**: `stackdock` ディレクトリでFlutterアプリを実行し、設定画面でGASのURLを入力します。
 
 ## 機能
 

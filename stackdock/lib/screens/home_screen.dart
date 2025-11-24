@@ -5,9 +5,9 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
 import '../models/article.dart';
-import 'package:read_it_later/services/api_service.dart';
-import 'package:read_it_later/services/auth_service.dart';
-import 'package:read_it_later/screens/settings_screen.dart';
+import 'package:stackdock/services/api_service.dart';
+import 'package:stackdock/services/auth_service.dart';
+import 'package:stackdock/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

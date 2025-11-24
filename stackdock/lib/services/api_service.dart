@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/article.dart';
 
-import 'package:read_it_later/services/auth_service.dart';
+import 'package:stackdock/services/auth_service.dart';
 
 class ApiService {
   static const String _urlKey = 'gas_web_app_url';
