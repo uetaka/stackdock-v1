@@ -18,6 +18,7 @@ Google Spreadsheetをバックエンドに利用した、自分専用の「後�
 │   ├── android/           # Android設定
 │   ├── ios/               # iOS設定
 │   └── web/               # Web設定
+├── setup_env.sh            # 環境変数設定スクリプト
 └── walkthrough.md          # 開発・セットアップガイド
 ```
 
@@ -25,6 +26,7 @@ Google Spreadsheetをバックエンドに利用した、自分専用の「後�
 
 WSL環境でAndroidアプリをビルドするには、Android SDKのインストールが必要です。
 詳細は [docs/android_sdk_setup.md](docs/android_sdk_setup.md) を参照してください。
+また、`setup_env.sh` を source することで環境変数を設定できます。
 
 ### Windows上のAndroidエミュレーターを使用する場合
 

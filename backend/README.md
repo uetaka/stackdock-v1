@@ -15,7 +15,7 @@
 4. **Deploy as Web App**
    - Click **Deploy** > **New deployment**.
    - Select type: **Web app**.
-   - Description: `Read It Later Backend`.
+   - Description: `Stackdock Backend`.
    - Execute as: **Me** (your email).
    - Who has access: **Anyone**. (This is important for the app to access it without complex OAuth for now. Since the URL is secret, it's relatively safe for personal use, but be careful not to share the URL).
    - Click **Deploy**.

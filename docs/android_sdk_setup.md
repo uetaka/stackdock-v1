@@ -33,6 +33,11 @@ export ANDROID_HOME=$HOME/android-sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
 ```
 
+または、プロジェクトルートにある `setup_env.sh` を利用することもできます。
+```bash
+source setup_env.sh
+```
+
 設定を反映させます。
 ```bash
 source ~/.bashrc
