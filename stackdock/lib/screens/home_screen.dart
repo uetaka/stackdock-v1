@@ -71,10 +71,70 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _handleSharedContent(String text) {
-    // Simple check if it looks like a URL
-    if (text.startsWith('http')) {
-      _addArticle(text);
+    // Extract URL from text
+    final urlRegExp = RegExp(
+      r'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+      caseSensitive: false,
+    );
+
+    final match = urlRegExp.firstMatch(text);
+    if (match != null) {
+      final url = match.group(0)!;
+      _showAddConfirmationDialog(url, text);
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No URL found in shared content')),
+        );
+      }
     }
+  }
+
+  void _showAddConfirmationDialog(String url, String originalText) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Add to Stackdock?'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Found URL:'),
+            const SizedBox(height: 8),
+            Text(
+              url,
+              style: const TextStyle(color: Colors.blue),
+            ),
+            if (url != originalText) ...[
+              const SizedBox(height: 16),
+              const Text(
+                'Original text:',
+                style: TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+              Text(
+                originalText,
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _addArticle(url);
+            },
+            child: const Text('Add'),
+          ),
+        ],
+      ),
+    );
   }
 
   Future<void> _signIn() async {
