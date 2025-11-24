@@ -8,7 +8,7 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Verify that our app title is present
-    expect(find.text('Read It Later'), findsOneWidget);
+    expect(find.text('Stackdock'), findsOneWidget);
     
     // Verify that we show "No articles found" initially (since no API call mocking here yet)
     // Note: In a real test we would mock the API service.

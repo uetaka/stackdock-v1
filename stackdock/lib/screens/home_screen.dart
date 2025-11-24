@@ -267,7 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Read It Later'),
+        title: const Text('Stackdock'),
         actions: [
           if (user != null)
             IconButton(

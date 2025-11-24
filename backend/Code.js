@@ -1,5 +1,5 @@
 /**
- * Google Apps Script for Read It Later Service
+ * Google Apps Script for Stackdock
  * 
  * Setup:
  * 1. Create a new Google Sheet.
@@ -58,7 +58,7 @@ function getHtmlOutput() {
     const template = HtmlService.createTemplateFromFile('index');
     template.articles = getArticles();
     return template.evaluate()
-        .setTitle('Read It Later')
+        .setTitle('Stackdock')
         .addMetaTag('viewport', 'width=device-width, initial-scale=1');
 }
 
