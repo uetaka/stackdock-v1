@@ -20,13 +20,24 @@ class _HomeScreenState extends State<HomeScreen> {
   final _apiService = ApiService();
   List<Article> _articles = [];
   bool _isLoading = false;
+  bool _isAuthInitializing = true;
   StreamSubscription? _intentDataStreamSubscription;
 
   @override
   void initState() {
     super.initState();
-    _checkGasUrl();
-    _setupSharingIntent();
+    _initializeApp();
+  }
+
+  Future<void> _initializeApp() async {
+    await AuthService().init();
+    if (mounted) {
+      setState(() {
+        _isAuthInitializing = false;
+      });
+      _checkGasUrl();
+      _setupSharingIntent();
+    }
   }
 
   @override
@@ -286,20 +297,22 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: user == null
-          ? Center(
-              child: ElevatedButton.icon(
-                icon: const Icon(Icons.login),
-                label: const Text('Sign in with Google'),
-                onPressed: _signIn,
-              ),
-            )
-          : _isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : _articles.isEmpty
-                  ? const Center(child: Text('No articles found'))
-                  : RefreshIndicator(
-                      onRefresh: _refreshArticles,
+      body: _isAuthInitializing
+          ? const Center(child: CircularProgressIndicator())
+          : user == null
+              ? Center(
+                  child: ElevatedButton.icon(
+                    icon: const Icon(Icons.login),
+                    label: const Text('Sign in with Google'),
+                    onPressed: _signIn,
+                  ),
+                )
+              : _isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : _articles.isEmpty
+                      ? const Center(child: Text('No articles found'))
+                      : RefreshIndicator(
+                          onRefresh: _refreshArticles,
                       child: ListView.builder(
                         itemCount: _articles.length,
                         itemBuilder: (context, index) {
